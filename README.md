@@ -1,5 +1,7 @@
 # 401-Final
 
+** This PR is for grading and feeback purposes only, don't merge! **
+
 The first final for the 401 class.
 
 ## Team Members:
@@ -46,4 +48,6 @@ Having a special item timer, for example, you are only allowed to buy a sugary t
 - Push to your forked repo(origin) and merge into the final project repository. Then ask another team member to go over your pull request
 - Always pull from upstream master
 - If two members are working on the same file, make sure you're communicating to minimize merge conflicts
+
+Good list, but more of a contributors guide. Coding Standards would tell me tabs v spaces and other code formatting standards
 

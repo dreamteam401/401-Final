@@ -18,20 +18,12 @@ describe('store schema', () => {
     it('is valid with name, brand, and price', () => {
         return new Store({ name: 'Fred Meyer', brand: 'Kroger', price: '$3.88', size: '32' }).validate();
     });
-    it('example data with all fields', () => {
-        const data = { name: 'Fred Meyer', brand: 'Kroger', price: '$3.44', size: '32' };
-        //requires all fields except unit
-        return new Store(data).validate()
-            .then(store => console.log(store))
-            .catch(err => { throw err; });
-    });
-    it('checks to see if this object is the same as the data we have', () => {
-        const data = { name: 'Fred Meyer', brand: 'Kroger', price: 344 };
-        const store = new Store(data);
 
-        assert.equal(data.name, store.name);
-        assert.equal(data.brand, store.brand);
-        assert.equal(data.price, store.price);
+    // this test isn't doing anything above test is doing...
+    // it('example data with all fields', () => {
+        
 
-    });
+    // this test is testing mongoose, not your code...
+    // it('checks to see if this object is the same as the data we have', () => {
+    
 });

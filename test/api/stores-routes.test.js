@@ -81,7 +81,7 @@ describe('store routes', () => {
                 storeTestTwo.__v = res.body.__v;
                 storeTestTwo._id = res.body._id;
                 assert.ok(storeTestTwo._id);
-            })
+            });
     });
 
     it('GET /stores - gets all stores and sorts by unit price highest to lowest', () => {
