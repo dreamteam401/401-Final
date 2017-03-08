@@ -49,3 +49,5 @@ Having a special item timer, for example, you are only allowed to buy a sugary t
 - Always pull from upstream master
 - If two members are working on the same file, make sure you're communicating to minimize merge conflicts
 
+Good list, but more of a contributors guide. Coding Standards would tell me tabs v spaces and other code formatting standards
+

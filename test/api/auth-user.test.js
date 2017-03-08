@@ -53,6 +53,7 @@ describe('authenticate credentials', () => {
                 });
         });
 
+        // not working? or forgotten .skip?
         it.skip('can\'t use same username', () =>
             badRequest('/signup', user, 'username test already exists')
         );
@@ -84,19 +85,19 @@ describe('authenticate credentials', () => {
 
         it('token is invalid', () =>
             request
-            .get('/verify')
-            .set('Authorization', 'bad token')
-            .then(
-                () => { throw new Error('success response not expected'); },
-                (res) => { assert.equal(res.status, 401); }
-            )
+                .get('/verify')
+                .set('Authorization', 'bad token')
+                .then(
+                    () => { throw new Error('success response not expected'); },
+                    (res) => { assert.equal(res.status, 401); }
+                )
         );
 
         it('token is valid', () =>
             request
-            .get('/verify')
-            .set('Authorization', token)
-            .then(res => assert.ok(res.body))
+                .get('/verify')
+                .set('Authorization', token)
+                .then(res => assert.ok(res.body))
         );
 
 

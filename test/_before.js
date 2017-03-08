@@ -10,28 +10,31 @@ chai.use(chaiHttp);
 const app = require('../lib/app');
 const request = chai.request(app);
 
-before(() => {
-    return request.post('/signup')
-        .send({
-            name: 'me',
-            email: 'me@email.com',
-            password: 'mepwd'
-        })
-        .then(data => {
-            return data;
-        })
-        .catch();
+// duplicate code, refactor to function...
+
+function signup(user) {
+
+    before(() => {
+        return request.post('/signup')
+            .send(user);
+            // this isn't doing anything...
+            // .then(data => {
+            //     return data;
+            // })
+            // this will suppress any errors, just let mocha handle
+            // and test will fail correctly on error.
+            // .catch();
+    });
+}
+
+signup({
+    name: 'me',
+    email: 'me@email.com',
+    password: 'mepwd'
 });
 
-before(() => {
-    return request.post('/signup')
-        .send({
-            name: 'you',
-            email: 'you@email.com',
-            password: 'youpwd'
-        })
-        .then(data => {
-            return data;
-        })
-        .catch();
+signup({
+    name: 'you',
+    email: 'you@email.com',
+    password: 'youpwd'
 });

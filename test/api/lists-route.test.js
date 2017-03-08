@@ -12,6 +12,8 @@ describe('list api', () => {
     let token = '';
     let role = '';
 
+    // this is in most of the api tests, 
+    // should be moved to common module in test 
     before(() => {
         return User.findOne({ name: 'me' })
             .then(user => {

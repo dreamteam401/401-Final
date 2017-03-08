@@ -58,13 +58,6 @@ describe('account api', () => {
             .then(res => res.body);
     }
 
-    function saveResource(resource, route) {
-        return request.post(route)
-            .set('Authorization', token)
-            .send(resource)
-            .then(res => res.body);
-    }
-
     it('create a new account', () => {
 
         let accountOne = {
@@ -92,10 +85,8 @@ describe('account api', () => {
                     .set('Role', 'owner')
                     .send({ user: data._id, role: 'viewer' })
                     .then(res => {
-                        const results = res.body.members.filter(x => {
-                            return x.user == data._id;
-                        });
-                        assert.equal(results[0].user, data._id);
+                        const result = res.body.members.find(x => x.user == data._id);
+                        assert.equal(result.user, data._id);
                     });
             });
     });
@@ -114,6 +105,7 @@ describe('account api', () => {
         return request.get('/accounts')
             .set('Authorization', token)
             .then(res => {
+                // weak test. What else can you assert besides an array
                 assert.isArray(res.body);
             });
     });
@@ -122,6 +114,7 @@ describe('account api', () => {
         return request.get(`/accounts/${account1._id}`)
             .set('Authorization', token)
             .then(res => {
+                // could you make more assertions than just id equality?
                 assert.equal(res.body._id, account1._id);
             });
     });
@@ -132,12 +125,8 @@ describe('account api', () => {
             .set('Role', 'owner')
             .send({ userId: userId1._id })
             .then(res => {
-                const results = res.body.members.filter(x => {
-                    if (x.user != userId1._id) {
-                        return x;
-                    }
-                    assert.notInclude(results, userId1._id);
-                });
+                const result = res.body.members.find(x => x.user == userId1._id);
+                assert.isNotOk(result);
             });
     });
 
